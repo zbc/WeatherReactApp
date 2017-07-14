@@ -1,11 +1,32 @@
 var React = require('react');
+var ZipCode = require('./ZipCode');
+var Header = require('./Header');
+var ReactRouter = require('react-router-dom');
+var Router = ReactRouter.BrowserRouter;
+var Route = ReactRouter.Route;
+var Switch = ReactRouter.Switch;
+var Home = require('./Home');
+var Forecast = require('./Forecast');
 
 class App extends React.Component {
     render() {
         return (
-            <div>
-                Hello World!
+            <Router>
+                <div className='container'>
+                    <Header />
+                    <Switch>
+                        <Route exact path='/' component={Home} />
+                        <Route path='/forecast' component={Forecast} />
+                        <Route render={
+                            function() {
+                                return (
+                                    <p>Not Found!</p>
+                                )
+                            }
+                        } />
+                </Switch>
             </div>
+        </Router>
         )
     }
 }
