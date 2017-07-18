@@ -11,7 +11,7 @@ class BriefDisplay extends React.Component {
         var icon = this.props.day.weather[0].icon;
         return (
             <div className='dayContainer'>
-                <img className='weather' src={'/app/images/weather-icons/'+icon+'.svg'} alt='Weather' />
+                <img className='weather' src={process.env.NODE_ENV==='production'? icon + '.svg' : '/app/images/weather-icons/'+icon+'.svg'} alt='Weather' />
                 <h2 className='subheader'>{date}</h2>
             </div>    
         )
